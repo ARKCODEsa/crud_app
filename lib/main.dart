@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'firebase_options.dart';
-main() async {
-  WidgetsFlutterBinding.ensureInitialized(); // Asegura la inicialización de los widgets
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
+import 'package:crud_app/login/Login.dart';
+import 'package:crud_app/check_in/check_In.dart';
+import 'package:crud_app/products/Product.dart';
+
+void main() {
   runApp(const MyApp());
 }
 
@@ -15,14 +13,14 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Hello World'),
-        ),
-        body: const Center(
-          child: Text('Hello World'),
-        ),
-      ),
+      title: 'CRUD App',
+      initialRoute: '/',
+      routes: {
+        '/': (context) => const Login(),
+        '/check_in': (context) => const Check_In(),
+        '/products': (context) => const ProductPage(),
+        // Add other routes here
+      },
     );
   }
 }
